@@ -14,3 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('/', function() {
+
+	$id = Request::get('id',-1);
+	$producto = Request::get('producto',-1);
+	$precio = Request::get('precio',-1);
+
+	DB::insert('insert into PRODUCTO (id, producto, precio) values (?, ?, ?)', [$id,$producto,$precio]);
+
+	return view('welcome');
+});
